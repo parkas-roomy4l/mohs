@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>mohs.surgery | The Gold Standard in Mohs Certification</title>
 <style>
-  html { scroll-behavior: smooth; }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -129,6 +128,7 @@
   .btn-gold:hover { background: #d4b060; }
   .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
   .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  html { scroll-behavior: smooth; }
 
   /* TRUST BAR */
   .trust-bar {
@@ -334,8 +334,8 @@
   <h1>The <em>Gold Standard</em> for Mohs Surgery Has Arrived</h1>
   <p>The American Board of Dermatology now offers board certification in Micrographic Dermatologic Surgery — setting a rigorous, uniform standard of excellence for patients and surgeons alike.</p>
   <div class="hero-cta">
-    <a href="#verify" class="btn btn-gold" onclick="document.getElementById('verify').scrollIntoView({behavior:'smooth'});return false;">Verify Your Surgeon →</a>
-    <a href="#why" class="btn btn-outline" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'});return false;">Why It Matters</a>
+    <button class="btn btn-gold" onclick="document.getElementById('verify').scrollIntoView({behavior:'smooth'})">Verify Your Surgeon →</button>
+    <button class="btn btn-outline" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">Why It Matters</button>
   </div>
 </header>
 
@@ -348,7 +348,7 @@
 </div>
 
 <!-- WHY ABMS & ABD -->
-<section id="why">
+<section id="why" style="scroll-margin-top: 64px;">
   <div class="container">
     <div class="section-label">Why Certification Matters</div>
     <h2>Not All Credentials Are Created Equal</h2>
@@ -471,7 +471,7 @@
 </section>
 
 <!-- VERIFY CTA -->
-<section id="verify" class="verify-section">
+<section id="verify" class="verify-section" style="scroll-margin-top: 64px;">
   <div class="container">
     <div class="section-label" style="color:var(--gold-light);">Verify Your Surgeon</div>
     <h2>Confirm Your Mohs Surgeon Is Board Certified</h2>
