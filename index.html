@@ -334,8 +334,8 @@
   <h1>The <em>Gold Standard</em> for Mohs Surgery Has Arrived</h1>
   <p>The American Board of Dermatology now offers board certification in Micrographic Dermatologic Surgery — setting a rigorous, uniform standard of excellence for patients and surgeons alike.</p>
   <div class="hero-cta">
-    <button class="btn btn-gold" onclick="document.getElementById('verify').scrollIntoView({behavior:'smooth'})">Verify Your Surgeon →</button>
-    <button class="btn btn-outline" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">Why It Matters</button>
+    <button class="btn btn-gold" id="btn-verify">Verify Your Surgeon →</button>
+    <button class="btn btn-outline" id="btn-why">Why It Matters</button>
   </div>
 </header>
 
@@ -519,6 +519,24 @@
   <p>Board certification verification: <a href="https://www.certificationmatters.org/" target="_blank">ABMS CertificationMatters.org</a> &nbsp;·&nbsp; <a href="https://www.abderm.org/" target="_blank">American Board of Dermatology</a> &nbsp;·&nbsp; <a href="https://www.abms.org/" target="_blank">ABMS.org</a></p>
   <p style="margin-top:1rem; font-size:0.75rem; color:#405070;">This site does not provide medical advice and is not affiliated with any professional society or certifying body.</p>
 </footer>
+
+<script>
+  document.getElementById('btn-verify').addEventListener('click', function() {
+    document.getElementById('verify').scrollIntoView({behavior: 'smooth'});
+  });
+  document.getElementById('btn-why').addEventListener('click', function() {
+    document.getElementById('why').scrollIntoView({behavior: 'smooth'});
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({behavior: 'smooth'});
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
