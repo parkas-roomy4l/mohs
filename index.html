@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mohs.surgery | The Gold Standard in Mohs Certification</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a2342;
+    --blue: #1a4f8a;
+    --gold: #c9a84c;
+    --gold-light: #f0d98a;
+    --cream: #faf8f4;
+    --white: #ffffff;
+    --text: #1e1e2e;
+    --muted: #5a6070;
+    --border: #e2e5ec;
+    --red-light: #fff3f3;
+    --red: #c0392b;
+  }
+
+  body {
+    font-family: 'Georgia', serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    color: var(--gold);
+    font-size: 1.05rem;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a {
+    color: #ccd6f6;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #163670 60%, #1a4f8a 100%);
+    color: white;
+    text-align: center;
+    padding: 5rem 1.5rem 4.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: normal;
+    line-height: 1.25;
+    max-width: 780px;
+    margin: 0 auto 1.2rem;
+  }
+  .hero h1 em {
+    color: var(--gold-light);
+    font-style: normal;
+    font-weight: bold;
+  }
+  .hero p {
+    font-family: sans-serif;
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto 2.2rem;
+    color: #b8c8e8;
+  }
+  .hero-cta {
+    display: inline-flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: #d4b060; }
+  .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .trust-item .icon { font-size: 1rem; }
+
+  /* SECTIONS */
+  section { padding: 5rem 1.5rem; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .section-label {
+    font-family: sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--navy);
+    margin-bottom: 1.2rem;
+  }
+  .lead {
+    font-size: 1.1rem;
+    color: var(--muted);
+    font-family: sans-serif;
+    max-width: 680px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* CARD GRID */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.8rem;
+    position: relative;
+  }
+  .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .card h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 0.6rem; }
+  .card p { font-family: sans-serif; font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+  .card-accent { border-top: 3px solid var(--gold); }
+
+  /* EXAM SECTION */
+  .exam-section { background: var(--navy); color: white; }
+  .exam-section .section-label { color: var(--gold-light); }
+  .exam-section h2 { color: white; }
+  .exam-section .lead { color: #9bafd0; }
+  .domain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .domain-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+  }
+  .domain-card .num {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--gold);
+    font-family: sans-serif;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .domain-card p { font-family: sans-serif; font-size: 0.85rem; color: #9bafd0; }
+
+  /* PARALLELS */
+  .parallels { background: var(--cream); }
+  .parallel-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .parallel-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    border-left: 4px solid var(--gold);
+  }
+  .parallel-item .specialty { font-weight: bold; color: var(--navy); font-family: sans-serif; min-width: 170px; }
+  .parallel-item .desc { font-family: sans-serif; font-size: 0.9rem; color: var(--muted); }
+
+  /* RISK SECTION */
+  .risk-section { background: #fdf5f5; border-top: 1px solid #f0d0d0; }
+  .risk-section h2 { color: #8b1a1a; }
+  .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  @media (max-width: 600px) { .risk-grid { grid-template-columns: 1fr; } }
+  .risk-box {
+    background: white;
+    border-radius: 8px;
+    padding: 1.6rem;
+    border: 1px solid #f0c8c8;
+  }
+  .risk-box h4 { font-family: sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.8rem; }
+  .risk-box.patient h4 { color: #c0392b; }
+  .risk-box.doctor h4 { color: #7d3c98; }
+  .risk-box ul { font-family: sans-serif; font-size: 0.9rem; color: var(--muted); padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; }
+
+  /* VERIFY CTA */
+  .verify-section {
+    background: linear-gradient(135deg, #0a2342 0%, #1a4f8a 100%);
+    color: white;
+    text-align: center;
+    padding: 5rem 1.5rem;
+  }
+  .verify-section h2 { color: white; margin-bottom: 1rem; }
+  .verify-section p { font-family: sans-serif; color: #9bafd0; max-width: 540px; margin: 0 auto 2rem; }
+  .verify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 1rem 2.2rem;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .verify-btn:hover { background: #d4b060; }
+  .verify-note { margin-top: 1rem; font-family: sans-serif; font-size: 0.8rem; color: #6a85aa; }
+
+  /* FAQ */
+  .faq-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+  details {
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+  }
+  details:first-child { border-top: 1px solid var(--border); }
+  summary {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 0.97rem;
+    color: var(--navy);
+    padding: 1.2rem 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 1.3rem; color: var(--gold); flex-shrink: 0; }
+  details[open] summary::after { content: '−'; }
+  .faq-answer { font-family: sans-serif; font-size: 0.92rem; color: var(--muted); padding-bottom: 1.2rem; max-width: 720px; line-height: 1.7; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: #6a85aa;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    font-family: sans-serif;
+    font-size: 0.82rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+  footer p + p { margin-top: 0.5rem; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .trust-bar { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">mohs.surgery</a>
+  <ul class="nav-links">
+    <li><a href="#why">Why It Matters</a></li>
+    <li><a href="#exam">The Exam</a></li>
+    <li><a href="#parallels">Other Specialties</a></li>
+    <li><a href="#risks">Risks</a></li>
+    <li><a href="#verify">Verify Your Doctor</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Board Certification in Micrographic Dermatologic Surgery</div>
+  <h1>The <em>Gold Standard</em> for Mohs Surgery Has Arrived</h1>
+  <p>The American Board of Dermatology now offers board certification in Micrographic Dermatologic Surgery — setting a rigorous, uniform standard of excellence for patients and surgeons alike.</p>
+  <div class="hero-cta">
+    <a href="#verify" class="btn btn-gold">Verify Your Surgeon →</a>
+    <a href="#why" class="btn btn-outline">Why It Matters</a>
+  </div>
+</header>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="icon">🏛️</span> Administered by the American Board of Dermatology</div>
+  <div class="trust-item"><span class="icon">✅</span> Recognized by the ABMS</div>
+  <div class="trust-item"><span class="icon">🔬</span> Covers surgical, pathological, and reconstructive competency</div>
+  <div class="trust-item"><span class="icon">🔍</span> Publicly verifiable credentials</div>
+</div>
+
+<!-- WHY ABMS & ABD -->
+<section id="why">
+  <div class="container">
+    <div class="section-label">Why Certification Matters</div>
+    <h2>Not All Credentials Are Created Equal</h2>
+    <p class="lead">For patients facing skin cancer surgery, knowing your surgeon holds a rigorous, standardized certification isn't a luxury — it's essential. Board certification in Micrographic Dermatologic Surgery (MDS) is that standard.</p>
+    <div class="card-grid">
+      <div class="card card-accent">
+        <div class="card-icon">🏛️</div>
+        <h3>The American Board of Medical Specialties (ABMS)</h3>
+        <p>The ABMS is the gold-standard umbrella organization overseeing physician certification in the United States. Member boards — including the American Board of Dermatology — must meet strict criteria for how they develop, administer, and maintain their exams. ABMS certification is the recognized benchmark of physician competency nationwide.</p>
+      </div>
+      <div class="card card-accent">
+        <div class="card-icon">🎓</div>
+        <h3>The American Board of Dermatology (ABD)</h3>
+        <p>The ABD has set the standard for dermatologic competency for over a century. Its new subspecialty certification in Micrographic Dermatologic Surgery applies that same rigorous framework to Mohs surgery — ensuring that surgeons who earn this credential have demonstrated mastery of both the surgical and pathological demands of the procedure.</p>
+      </div>
+      <div class="card card-accent">
+        <div class="card-icon">📋</div>
+        <h3>Standardization Protects Patients</h3>
+        <p>Unlike informal credentials, ABD board certification requires passing a comprehensive, standardized examination — not simply completing a training program. This means patients can trust that their surgeon's skills have been objectively verified by an independent, nationally recognized body, regardless of where they trained.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAM BREADTH -->
+<section id="exam" class="exam-section">
+  <div class="container">
+    <div class="section-label">Examination Rigor</div>
+    <h2>A Certification Exam That Tests the Full Scope of Mohs Surgery</h2>
+    <p class="lead">The MDS board exam is not a single-skill test. It spans the complete clinical and technical demands of Mohs micrographic surgery — from cancer diagnosis to tissue reconstruction.</p>
+    <div class="domain-grid">
+      <div class="domain-card">
+        <div class="num">01</div>
+        <p>Dermatopathology & tumor identification under the microscope</p>
+      </div>
+      <div class="domain-card">
+        <div class="num">02</div>
+        <p>Surgical technique, tissue processing, and margin control</p>
+      </div>
+      <div class="domain-card">
+        <div class="num">03</div>
+        <p>Complex wound repair, flaps, and reconstructive surgery</p>
+      </div>
+      <div class="domain-card">
+        <div class="num">04</div>
+        <p>Skin cancer biology, staging, and oncologic principles</p>
+      </div>
+      <div class="domain-card">
+        <div class="num">05</div>
+        <p>Anesthesia, sterile technique, and perioperative safety</p>
+      </div>
+      <div class="domain-card">
+        <div class="num">06</div>
+        <p>Medical ethics, documentation, and patient-centered care</p>
+      </div>
+    </div>
+    <p style="margin-top:2rem; font-family:sans-serif; font-size:0.9rem; color:#7a9cc0;">This breadth ensures that board-certified MDS surgeons can not only remove tumors precisely, but also interpret their own tissue slides and manage the full range of surgical outcomes — a rare and essential combination of skills.</p>
+  </div>
+</section>
+
+<!-- PARALLELS -->
+<section id="parallels" class="parallels">
+  <div class="container">
+    <div class="section-label">Medicine-Wide Standard</div>
+    <h2>Every Surgical Specialty Has a Board Certification. Now Mohs Does Too.</h2>
+    <p class="lead">Across medicine, patients and institutions rely on board certification to identify qualified surgeons. Mohs surgery now has that same rigorous, verifiable standard.</p>
+    <ul class="parallel-list">
+      <li class="parallel-item">
+        <span class="specialty">🫀 Cardiac Surgery</span>
+        <span class="desc">Surgeons operating on the heart must be board certified by the American Board of Thoracic Surgery — no exceptions accepted by major hospitals or insurers.</span>
+      </li>
+      <li class="parallel-item">
+        <span class="specialty">🧠 Neurosurgery</span>
+        <span class="desc">Board certification through the American Board of Neurological Surgery is the defining credential patients and institutions look for when lives are on the line.</span>
+      </li>
+      <li class="parallel-item">
+        <span class="specialty">👁️ Ophthalmology</span>
+        <span class="desc">The American Board of Ophthalmology certifies surgeons performing delicate procedures on one of the body's most sensitive organs — a trusted standard for patients selecting a surgeon.</span>
+      </li>
+      <li class="parallel-item">
+        <span class="specialty">🦴 Orthopedic Surgery</span>
+        <span class="desc">Board certification in orthopedics, with subspecialty options for joints, spine, and sports medicine, ensures measurable, verified surgical competency.</span>
+      </li>
+      <li class="parallel-item">
+        <span class="specialty">🔬 Micrographic Dermatologic Surgery</span>
+        <span class="desc">Now, patients seeking Mohs surgery have the same assurance: ABD board certification in MDS sets a verified, rigorous national standard — just like every other surgical field.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- RISKS -->
+<section id="risks" class="risk-section">
+  <div class="container">
+    <div class="section-label">What's at Stake</div>
+    <h2 style="color:#8b1a1a;">The Risks of Choosing an Uncertified Surgeon</h2>
+    <p class="lead" style="color:var(--muted);">Skin cancer surgery on the face, scalp, and hands demands precision. Without verified, standardized training, patients and physicians both bear unnecessary risk.</p>
+    <div class="risk-grid">
+      <div class="risk-box patient">
+        <h4>⚠️ Risks to Patients</h4>
+        <ul>
+          <li>Incomplete tumor removal due to substandard margin evaluation</li>
+          <li>Higher rates of cancer recurrence requiring additional surgery</li>
+          <li>Poor cosmetic and functional outcomes from inadequate reconstruction</li>
+          <li>No objective assurance that a surgeon's skills have been independently verified</li>
+          <li>Difficulty distinguishing truly qualified Mohs surgeons from those with variable training</li>
+        </ul>
+      </div>
+      <div class="risk-box doctor">
+        <h4>⚖️ Risks to Physicians</h4>
+        <ul>
+          <li>Increased medicolegal exposure without a recognized credential to demonstrate competency</li>
+          <li>Credentialing challenges at hospitals and surgery centers that require verified subspecialty certification</li>
+          <li>Growing competitive disadvantage as board certification becomes the expected standard</li>
+          <li>Reputational risk as patients become more aware of and seek out certified surgeons</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERIFY CTA -->
+<section id="verify" class="verify-section">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold-light);">Verify Your Surgeon</div>
+    <h2>Confirm Your Mohs Surgeon Is Board Certified</h2>
+    <p>The ABMS provides a free, public tool to verify any physician's board certification status. Before your procedure, take one minute to confirm your surgeon holds ABD certification in Micrographic Dermatologic Surgery.</p>
+    <a href="https://www.certificationmatters.org/" target="_blank" rel="noopener noreferrer" class="verify-btn">
+      🔍 Verify Board Certification — ABMS CertificationMatters.org
+    </a>
+    <p class="verify-note">Free public resource. No account required. Maintained by the American Board of Medical Specialties.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-label">Common Questions</div>
+    <h2>What Patients Ask</h2>
+    <div class="faq-list">
+      <details>
+        <summary>What is Mohs micrographic surgery?</summary>
+        <p class="faq-answer">Mohs micrographic surgery is a precise surgical technique for removing skin cancer — most commonly basal cell carcinoma and squamous cell carcinoma — in thin layers. After each layer is removed, the surgeon immediately examines it under a microscope to check for remaining cancer cells. This process continues until all margins are clear, maximizing the cure rate while preserving as much healthy tissue as possible.</p>
+      </details>
+      <details>
+        <summary>What does ABD board certification in MDS mean?</summary>
+        <p class="faq-answer">The American Board of Dermatology (ABD) now offers a subspecialty certification in Micrographic Dermatologic Surgery (MDS) — the formal name for Mohs surgery practice at its full scope. To earn this credential, a dermatologist must pass a rigorous, comprehensive examination covering surgical technique, dermatopathology, and reconstructive surgery. This certification is recognized by the American Board of Medical Specialties (ABMS), the gold-standard oversight body for physician certification in the United States.</p>
+      </details>
+      <details>
+        <summary>How do I verify my doctor's board certification?</summary>
+        <p class="faq-answer">Visit <a href="https://www.certificationmatters.org/" target="_blank" rel="noopener noreferrer">CertificationMatters.org</a>, the free public verification tool maintained by the ABMS. Search for your physician by name to confirm they hold board certification — including in Micrographic Dermatologic Surgery specifically.</p>
+      </details>
+      <details>
+        <summary>Should I ask my surgeon about their certification before scheduling?</summary>
+        <p class="faq-answer">Absolutely. Asking whether your surgeon is board certified in Micrographic Dermatologic Surgery by the ABD is a reasonable, appropriate question — just as you would ask a cardiac surgeon or orthopedic specialist about their credentials. A qualified, board-certified surgeon will be glad to confirm this.</p>
+      </details>
+      <details>
+        <summary>Why does standardized certification matter for this procedure specifically?</summary>
+        <p class="faq-answer">Mohs surgery is unique in that the operating surgeon must also function as the pathologist, reading their own tissue sections in real time under a microscope. This dual demand — surgical precision plus pathologic expertise — makes rigorous, standardized certification especially important. Board certification ensures that a surgeon's competency in both skill sets has been independently verified.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>This resource is provided for educational purposes to help patients and referring physicians understand the importance of board certification in Micrographic Dermatologic Surgery.</p>
+  <p>Board certification verification: <a href="https://www.certificationmatters.org/" target="_blank">ABMS CertificationMatters.org</a> &nbsp;·&nbsp; <a href="https://www.abderm.org/" target="_blank">American Board of Dermatology</a> &nbsp;·&nbsp; <a href="https://www.abms.org/" target="_blank">ABMS.org</a></p>
+  <p style="margin-top:1rem; font-size:0.75rem; color:#405070;">This site does not provide medical advice and is not affiliated with any professional society or certifying body.</p>
+</footer>
+
+</body>
+</html>
